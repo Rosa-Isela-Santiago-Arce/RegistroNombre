@@ -1,0 +1,53 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class RegistroDeNombres {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<String> nombres = new ArrayList<>(); // Lista para almacenar nombres
+        boolean continuar = true;
+
+        System.out.println("Bienvenido al registro de nombres.");
+        System.out.println("Opciones:");
+        System.out.println("1 - Registrar un nombre");
+        System.out.println("2 - Mostrar todos los nombres");
+        System.out.println("3 - Salir");
+
+        while (continuar) {
+            System.out.print("\nElige una opción: ");
+            String opcion = scanner.next();
+
+            switch (opcion) {
+                case "1":
+                    System.out.print("Ingresa un nombre: ");
+                    scanner.nextLine(); // Consumir la nueva línea
+                    String nombre = scanner.nextLine();
+                    nombres.add(nombre);
+                    System.out.println("Nombre registrado correctamente.");
+                    break;
+
+                case "2":
+                    if (nombres.isEmpty()) {
+                        System.out.println("No hay nombres registrados.");
+                    } else {
+                        System.out.println("Nombres registrados:");
+                        for (String n : nombres) {
+                            System.out.println("- " + n);
+                        }
+                    }
+                    break;
+
+                case "3":
+                    continuar = false;
+                    System.out.println("Gracias por usar el registro de nombres. ¡Adiós!");
+                    break;
+
+                default:
+                    System.out.println("Opción no válida. Intenta de nuevo.");
+                    break;
+            }
+        }
+
+        scanner.close();
+    }
+}
